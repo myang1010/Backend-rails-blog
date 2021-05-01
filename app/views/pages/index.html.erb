@@ -1,0 +1,13 @@
+<h1>Blog Pages</h1>
+
+<% @pages.each do |page| %>
+    <%#<p><%= page.title</p> %>
+    <%# since we name the route in routes.rb file, so we can simplify the second argument from  %>
+    <%# <p><%= link_to page.title, "/pages/#{page.id}" </p>%> 
+    <%# to %>
+    <%# <p><%= link_to page.title, page_path(page)%><%#</p> %>
+    <%# and to here %>
+    <p><%= link_to page.title, page %></p>
+<% end %>
+
+<%= link_to 'New Page', new_page_path %>
