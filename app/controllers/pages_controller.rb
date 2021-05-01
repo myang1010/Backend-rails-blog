@@ -9,6 +9,9 @@ class PagesController < ApplicationController
         # render text: @page.title #Rails only renders one thing per controller action
         # set_page 
             # this was called by before_action method, so we don't need to call this method explicitly anymore.
+    # rescue ActiveRecord::RecordNotFound
+    #     flash[:notice] = "We couldn't find that page"
+    #     redirect_to action: :index
     end 
     
     def new
@@ -52,5 +55,8 @@ class PagesController < ApplicationController
 
         def set_page
             @page = Page.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+            flash[:notice] = "We couldn't find that page"
+            redirect_to action: :index
         end    
 end
